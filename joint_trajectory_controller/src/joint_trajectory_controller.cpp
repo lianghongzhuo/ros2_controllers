@@ -375,7 +375,7 @@ controller_interface::return_type JointTrajectoryController::update(
             rt_active_goal_.writeFromNonRT(RealtimeGoalHandlePtr());
             rt_has_pending_goal_.writeFromNonRT(false);
 
-            RCLCPP_INFO(logger, "Goal reached, success!");
+            // RCLCPP_INFO(logger, "Goal reached, success!");
 
             traj_msg_external_point_ptr_.reset();
             traj_msg_external_point_ptr_.initRT(set_success_trajectory_point());
@@ -1229,7 +1229,7 @@ void JointTrajectoryController::topic_callback(
 rclcpp_action::GoalResponse JointTrajectoryController::goal_received_callback(
   const rclcpp_action::GoalUUID &, std::shared_ptr<const FollowJTrajAction::Goal> goal)
 {
-  RCLCPP_INFO(get_node()->get_logger(), "Received new action goal");
+  // RCLCPP_INFO(get_node()->get_logger(), "Received new action goal");
 
   // Precondition: Running controller
   if (get_state().id() == lifecycle_msgs::msg::State::PRIMARY_STATE_INACTIVE)
@@ -1244,7 +1244,7 @@ rclcpp_action::GoalResponse JointTrajectoryController::goal_received_callback(
     return rclcpp_action::GoalResponse::REJECT;
   }
 
-  RCLCPP_INFO(get_node()->get_logger(), "Accepted new action goal");
+  // RCLCPP_INFO(get_node()->get_logger(), "Accepted new action goal");
   return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;
 }
 
